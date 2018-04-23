@@ -9,8 +9,8 @@ function pagingSlide() {
     step += 1;
     if(step > arrImage.length - 1){
         step = 0;
-    }
+    };
 
-}
+};
 
-setInterval(pagingSlide, 1000);
+setInterval(pagingSlide, 5000);
