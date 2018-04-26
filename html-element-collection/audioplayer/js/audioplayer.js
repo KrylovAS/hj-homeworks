@@ -1,7 +1,6 @@
 'use strict';
 
 const player = document.getElementsByTagName('audio')[0];
-const playe = document.getElementsByTagName('audio');
 const titleMusic = document.getElementsByTagName('span')[0];
 const btnPlay = document.getElementsByClassName('playstate')[0];
 const btnStop = document.getElementsByClassName('stop')[0];
