@@ -10,9 +10,9 @@ const btnNext = document.getElementsByClassName('next')[0];
 const playstate = document.getElementsByClassName('playstate')[0];
 const arrMusic = ['mp3/LA Chill Tour.mp3', 'mp3/LA Fusion Jam.mp3', 'mp3/This is it band.mp3'];
 const arrTitle = ['LA Chill Tour', 'LA Fusion Jam', 'This is it band'];
+let i = 0;
 
-btnPlay.onclick = function() {
-  
+btnPlay.onclick = function() {  
   if(player.paused) {
     player.play();
     playstate.classList.add('fa','fa-pause' );    
@@ -23,10 +23,11 @@ btnPlay.onclick = function() {
 }
 
 btnStop.onclick = function() {
+  playstate.classList.remove('fa','fa-pause' );
   player.pause();
   player.currentTime = 0;  
 }
-let i = 0;
+
 btnNext.onclick = function() {
   i++;
 
@@ -44,10 +45,11 @@ btnBack.onclick = function() {
     i = arrMusic.length - 1;
   }
 
-  walkArray()
+  walkArray();
 }
 
 function walkArray() {
+  playstate.classList.remove('fa','fa-pause' );
   player.src = arrMusic[i];
   titleMusic.title = arrTitle[i]; 
 }
