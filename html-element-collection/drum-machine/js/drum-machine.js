@@ -1,10 +1,11 @@
 const tool = document.getElementsByClassName('drum-kit__drum');
 
 for(let i of tool) {
-  i.onclick = zzz; 
+  i.onclick = playSound; 
 }
 
-function zzz() {
+function playSound() {  
 const sound = this.getElementsByTagName('audio')[0];
-sound.play()
+sound.play();
+sound.currentTime = 0;
 }
