@@ -15,8 +15,7 @@ btnPlay.onclick = function() {
   if(player.paused) {
     media.classList.toggle('play')
     player.autoplay = true;
-    player.play();
-    player.addEventListener("ended", function() { media.classList.toggle('play'); }, true);       
+    player.play();         
   }else {
     media.classList.toggle('play')
     player.pause();       
