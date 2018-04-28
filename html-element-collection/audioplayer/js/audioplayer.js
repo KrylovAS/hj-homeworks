@@ -15,10 +15,11 @@ btnPlay.onclick = function() {
   if(player.paused) {
     media.classList.toggle('play')
     player.autoplay = true;
-    player.play();         
+    player.play();           
   }else {
-    media.classList.toggle('play')
-    player.pause();       
+    media.classList.remove('play')
+    player.pause();
+    player.autoplay = false;       
   }
 }
 
