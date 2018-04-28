@@ -1,5 +1,5 @@
 'use strict';
-
+const media = document.getElementsByClassName('mediaplayer')[0];
 const player = document.getElementsByTagName('audio')[0];
 const titleMusic = document.getElementsByTagName('span')[0];
 const btnPlay = document.getElementsByClassName('playstate')[0];
@@ -13,16 +13,18 @@ let i = 0;
 
 btnPlay.onclick = function() {  
   if(player.paused) {
-    player.play();
-    playstate.classList.add('fa','fa-pause' );    
+    media.classList.toggle('play')
+    player.autoplay = true;
+    player.play();       
   }else {
-    player.pause();
-    playstate.classList.remove('fa','fa-pause' );    
+    media.classList.toggle('play')
+    player.pause();       
   }
 }
 
 btnStop.onclick = function() {
-  playstate.classList.remove('fa','fa-pause' );
+  media.classList.remove('play')
+  player.autoplay = false;
   player.pause();
   player.currentTime = 0;  
 }
@@ -37,7 +39,7 @@ btnNext.onclick = function() {
   walkArray();   
 }
 
-btnBack.onclick = function() {
+btnBack.onclick = function() {  
   i--;
 
   if(i < 0) {
@@ -47,8 +49,7 @@ btnBack.onclick = function() {
   walkArray();
 }
 
-function walkArray() {
-  playstate.classList.remove('fa','fa-pause' );
+function walkArray() {  
   player.src = arrMusic[i];
   titleMusic.title = arrTitle[i]; 
 }
