@@ -15,13 +15,19 @@ btnPlay.onclick = function() {
   if(player.paused) {
     media.classList.toggle('play')
     player.autoplay = true;
-    player.play();           
+    player.play();
+                
   }else {
     media.classList.remove('play')
     player.pause();
     player.autoplay = false;       
   }
 }
+//при окончании проигрывания песни анимация прекращается
+player.addEventListener("ended", function() { 
+  media.classList.remove('play');
+  player.autoplay = false;
+ }); 
 
 btnStop.onclick = function() {
   media.classList.remove('play')
