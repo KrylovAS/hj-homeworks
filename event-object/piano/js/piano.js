@@ -1,3 +1,5 @@
+'use strict';
+
 const listKey = document.getElementsByClassName('middle')[0];
 const key = listKey.getElementsByTagName('li');
 const sound = listKey.getElementsByTagName('audio');
