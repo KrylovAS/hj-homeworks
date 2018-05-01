@@ -1,6 +1,6 @@
 'use strict';
-const codeWord = 'нетология';
-let testWord = '';
+const codeWord = ['KeyY', 'KeyT', 'KeyN', 'KeyJ', 'KeyK', 'KeyJ', 'KeyU', 'KeyB', 'KeyZ'];
+let testWord = [];
 let i = 0;
 
 function updatePlayer(event) {  
@@ -12,15 +12,15 @@ function updatePlayer(event) {
   }
 }
 
-function viewSurprise(event) {   
-  if(event.key === codeWord[i]){
-    i++;     
-    testWord += event.key;    
-    if(codeWord === testWord){
+function viewSurprise(event) {  
+  if(event.code === codeWord[i]){
+    testWord.push(event.code);    
+    i++;
+    if(codeWord.join() === testWord.join()){
     document.getElementsByClassName('secret')[0].classList.toggle('visible')
     }
   }else {   
-    testWord = '';
+    testWord = [];
     i = 0;
   }  
 }
