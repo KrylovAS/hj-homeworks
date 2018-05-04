@@ -7,23 +7,13 @@ let product = 0;
 let priceProduct = [];
 
 for(let a of addProduct) {
-  a.addEventListener('click', func)
+  a.addEventListener('click', calcQuantity)
 }
 
-function func() {  
+function calcQuantity() {  
    priceProduct.push(+(this.dataset.price));    
-   totalSum.innerHTML = priceProduct.reduce((a, b) => a + b );
+   totalSum.innerHTML = getPriceFormatted(priceProduct.reduce((a, b) => a + b ));
    product++;
    totalProduct.innerHTML = product;  
 }
-
-
-
-
-
-
-
-
-
-
 
