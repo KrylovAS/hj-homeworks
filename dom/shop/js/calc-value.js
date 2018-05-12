@@ -12,7 +12,7 @@ for(let a of addProduct) {
 
 function calcQuantity() {  
   priceProduct += +this.dataset.price
-  totalSum.innerHTML = priceProduct;  
+  totalSum.innerHTML = getPriceFormatted(priceProduct);  
   product++;
   totalProduct.innerHTML = product;  
 }
