@@ -6,11 +6,11 @@ const decrementCounter = document.getElementById('decrement');
 const resetCounter = document.getElementById('reset');
 const wrapBtn = document.querySelectorAll('.wrap-btns');
 
+(!localStorage.counter) ? counter.textContent = 0 : counter.textContent = localStorage.counter;
 
 for(let key of wrapBtn){
-  key.addEventListener('click', memodata )
+  key.addEventListener('click', memodata);
 }
-counter.textContent = 0;
 
 function memodata(){
   if(event.target.id === 'increment') {
@@ -20,8 +20,7 @@ function memodata(){
   }else {
     counter.textContent = 0;
   }
-  localStorage.counter = counter.textContent; 
+  localStorage.counter = counter.textContent;  
 }
-counter.textContent = localStorage.counter;
 
 
