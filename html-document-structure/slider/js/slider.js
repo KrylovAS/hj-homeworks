@@ -9,8 +9,7 @@ const slideList = document.querySelector('.slides')
 const currentSlide = document.querySelector('.slide-current');
 
 slide[0].classList.add('slide-current');
-prevBtn.classList.add('disabled');
-firstBtn.classList.add('disabled');
+addClassPrevFirstBtn();
 
 for(let key of sliderNav){ 
  key.addEventListener('click', checkAccessibility)
@@ -28,18 +27,15 @@ function checkAccessibility(){
       case lastBtn:
       deleteCurrentClass();
       slideList.lastElementChild.classList.add('slide-current');
-      prevBtn.classList.remove('disabled');
-      firstBtn.classList.remove('disabled');
-      nextBtn.classList.add('disabled');
-      lastBtn.classList.add('disabled');
+      removeClassPrevFirstBtn();
+      addClassNextLastBtn();
       break;
       case firstBtn:
       deleteCurrentClass();
       slideList.firstElementChild.classList.add('slide-current');    
       nextBtn.classList.remove('disabled');
       lastBtn.classList.remove('disabled');
-      prevBtn.classList.add('disabled');
-      firstBtn.classList.add('disabled');
+      addClassPrevFirstBtn();
       break;
     }
   }
@@ -49,14 +45,39 @@ function checkAccessibility(){
     }
   }
 }
-function changeSlide(click) {
-    const currentSlide = document.querySelector('.slide-current');
-    const showSlide = click? currentSlide.nextElementSibling : currentSlide.previousElementSibling;
-    currentSlide.classList.remove('slide-current');
-    showSlide.classList.add('slide-current');       
-    showSlide.nextElementSibling ? nextBtn.classList.remove('disabled') || lastBtn.classList.remove('disabled') : nextBtn.classList.add('disabled') || lastBtn.classList.add('disabled');
-    showSlide.previousElementSibling ? prevBtn.classList.remove('disabled') || firstBtn.classList.remove('disabled') : prevBtn.classList.add('disabled') || firstBtn.classList.add('disabled');
+function addClassNextLastBtn() {
+  nextBtn.classList.add('disabled');
+  lastBtn.classList.add('disabled');
+}
+
+function addClassPrevFirstBtn() {
+  prevBtn.classList.add('disabled');
+  firstBtn.classList.add('disabled');
+}
+
+function removeClassPrevFirstBtn() {
+  prevBtn.classList.remove('disabled');
+  firstBtn.classList.remove('disabled');
+}
+
+function changeSlide(isForward) {
+  const currentSlide = document.querySelector('.slide-current');
+  const showSlide = isForward? currentSlide.nextElementSibling : currentSlide.previousElementSibling;
+  
+  currentSlide.classList.remove('slide-current');
+  showSlide.classList.add('slide-current'); 
+  if(showSlide.nextElementSibling){
+     removeClassNextLastBtn();
+    }else {
+     nextBtn.classList.add('disabled');
+     lastBtn.classList.add('disabled')
+    }
     
+  if(showSlide.previousElementSibling){
+    removeClassPrevFirstBtn()
+    }else {
+    addClassPrevFirstBtn();
+    }
 }
 
 
@@ -70,4 +91,9 @@ function changeSlide(click) {
 
 
 
+
+function removeClassDisableNextLastBtn() {
+  nextBtn.classList.remove('disabled');
+  lastBtn.classList.remove('disabled');
+}
 
