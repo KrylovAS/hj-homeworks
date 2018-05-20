@@ -20,13 +20,13 @@ function checkAccessibility(){
   if(!this.classList.contains('disabled')){
     switch(this){
       case nextBtn:
-      chanchSlide(true);
+      changeSlide(true);
       break;
       case prevBtn:
-      chanchSlide(false);
+      changeSlide(false);
       break;
       case lastBtn:
-      deleteCurrientClass();
+      deleteCurrentClass();
       slideList.lastElementChild.classList.add('slide-current');
       prevBtn.classList.remove('disabled');
       firstBtn.classList.remove('disabled');
@@ -34,7 +34,7 @@ function checkAccessibility(){
       lastBtn.classList.add('disabled');
       break;
       case firstBtn:
-      deleteCurrientClass();
+      deleteCurrentClass();
       slideList.firstElementChild.classList.add('slide-current');    
       nextBtn.classList.remove('disabled');
       lastBtn.classList.remove('disabled');
@@ -43,13 +43,13 @@ function checkAccessibility(){
       break;
     }
   }
-  function deleteCurrientClass() {
+  function deleteCurrentClass() {
     for (let key of slide) {
       key.classList.remove('slide-current');
     }
   }
 }
-function chanchSlide(click) {
+function changeSlide(click) {
     const currentSlide = document.querySelector('.slide-current');
     const showSlide = click? currentSlide.nextElementSibling : currentSlide.previousElementSibling;
     currentSlide.classList.remove('slide-current');
