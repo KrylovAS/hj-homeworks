@@ -2,10 +2,10 @@
 
 function toggleMenu(event) {  
   const nodeDropdownMenu = Array
-                .from(document.querySelectorAll('a[data-toggle="dropdown"]'))
+                .from(document.querySelectorAll('.dropdown-menu a'))
                 .find(el => el === event.target); 
-
-  if(event.target !== nodeDropdownMenu)  return;
+  
+  if(event.target === nodeDropdownMenu)  return;
   if (this.classList.contains('show')) {
     this.classList.remove('show');
     this.classList.add('hide');
