@@ -1,11 +1,8 @@
 'use strict';
 
 function handleTableClick(event) {
-  let nodeTh = Array
-                    .from(document.getElementsByClassName('prop__name'))
-                    .find(el => el === event.target);  
-
-  if(event.target !== nodeTh ) return;
+    
+ if(!event.target.classList.contains('prop__name')) return;  
 
   event.currentTarget.dataset.sortBy = event.target.dataset.propName;  
   event.target.dataset.dir;   
