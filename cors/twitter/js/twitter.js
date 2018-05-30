@@ -2,7 +2,7 @@
 function loadData(url) {
   const callbackName = 'callback' + parseInt(Math.random() * (50 - 1) + 1);
   return new Promise((done, fail) => {
-  window[functionName] = done;
+  window[callbackName] = done;
   const script = document.createElement('script');
   script.src = `${url}?jsonp=${callbackName}`;
   document.body.appendChild(script);
