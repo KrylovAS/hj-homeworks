@@ -1,12 +1,11 @@
 'use strict';
-//loadData('')
 
 function loadData(url){
   const callbackName = 'callback' + parseInt(Math.random() * (50 - 1) + 1);  
   return new Promise((done, fail) => {
-    window[functionName] = done;
+    window[callbackName] = done;
     const script = document.createElement('script');
-    script.src = `${url}?jsonp=${functionName}`;    
+    script.src = `${url}?jsonp=${callbackName}`;    
     document.body.appendChild(script);
     });
 }
@@ -21,9 +20,9 @@ function profileData(data) {
 }
 
 function technologiesData(data){  
-  const badgescard = document.getElementsByClassName('badgescard')[0];
+  let  badgescard = document.getElementsByClassName('badgescard')[0];
   document.getElementsByClassName('content')[0].style.display = 'initial';
-  badgescard.innerHTML = '';  
+  badgescard.innerHTML= '';  
   data.forEach(el => {
     badgescard.innerHTML += `<span class="devicons devicons-${el}"></span>`  
   });  
