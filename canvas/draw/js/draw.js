@@ -41,10 +41,10 @@ function getBrushSize() {
 }
 
 function getColor() {
-  if(shift ){
+  if(shift){
     return (color > 0 && color <= 359)? color-- : color = 359;
   }else {
-    return (color < 359)? color++ : color = 0;
+    return (color <= 359)? color++ : color = 0;
   }    
 }
 
@@ -52,6 +52,7 @@ function smoothCurveBetween (p1, p2) {
   const cp = p1.map((coord, idx) => (coord + p2[idx]) / 2);
   ctx.lineWidth = getBrushSize();  
   ctx.strokeStyle =  `hsl(${getColor()}, 100%, 50%)`;  
+  console.log('​smoothCurveBetween -> getColor()', getColor());
   ctx.quadraticCurveTo(...p1, ...cp);
 }
 
@@ -63,7 +64,7 @@ function smoothCurve(points) {
   if (points.length > 2) {
     for (let i = points.length - 2; i < points.length - 1; i++) {
     ctx.moveTo(...points[i]);
-    smoothCurveBetween(points[i], points[i + 1]);
+    smoothCurveBetween(points[i], points[i + 1]);    
     }
     ctx.stroke();
   }
@@ -83,9 +84,6 @@ canvas.addEventListener("mousedown", (e) => {
 canvas.addEventListener("mouseup", (e) => {
   curves = [];
   drawing = false;  
-  if(e.shiftKey){
-    shift = false;  
-  }
 });
 
 canvas.addEventListener("mouseleave", () => {
@@ -98,6 +96,8 @@ canvas.addEventListener("mousemove", (e) => {
   if (drawing) {
     if(e.shiftKey){
       shift = true;    
+    }else{
+      shift = false; 
     }    
     const point = [e.offsetX, e.offsetY]
     curves[curves.length - 1].push(point);
@@ -105,6 +105,7 @@ canvas.addEventListener("mousemove", (e) => {
     
   }
 });
+
 
 function repaint () {
     curves.forEach((curve) => smoothCurve(curve));
