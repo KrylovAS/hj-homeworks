@@ -54,10 +54,12 @@ setMessageBtn.addEventListener('click', e => {
 
 function messageDate() {
   let date = new Date();
-  let formatTimeHours, formatTimeMin; 
-  (date.getHours() < 10)? formatTimeHours = 0 : formatTimeHours = ''; 
-  (date.getMinutes() < 10)? formatTimeMin = 0 : formatTimeMin= ''; 
-  return `${formatTimeHours}${date.getHours()} : ${formatTimeMin}${date.getMinutes()}`;
+  let options = {
+    hour: "2-digit", minute: "2-digit"
+  }
+  let ruDate = new Intl.DateTimeFormat("ru-RU", options).format
+  
+  return ruDate(date) 
 }
 
 
